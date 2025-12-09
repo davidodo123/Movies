@@ -1,0 +1,470 @@
+/* =========================================
+   VARIABLES Y BASE GENERAL
+   ========================================= */
+
+:root {
+    --bg-page: #f5f5f7;
+    --bg-card: #ffffff;
+    --bg-card-soft: #fafafa;
+    --text-main: #141414;
+    --text-muted: #777;
+    --border-soft: #e2e2e2;
+    --accent: #ffb400;      /* dorado tipo estrellas */
+    --accent-soft: #fff5d6;
+    --danger: #e74c3c;
+    --success: #27ae60;
+    --shadow-soft: 0 10px 25px rgba(0, 0, 0, 0.06);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: var(--text-main);
+    background-color: var(--bg-page);
+}
+
+/* quitamos overlays antiguos */
+body::before,
+body::after {
+    content: none;
+}
+
+/* scroll sencillo */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-thumb {
+    background: #cfcfcf;
+    border-radius: 4px;
+}
+
+/* =========================================
+   LAYOUT / CONTENEDOR
+   ========================================= */
+
+.container {
+    max-width: 1100px;
+    padding: 2rem 1.5rem 3rem;
+}
+
+/* =========================================
+   NAVBAR
+   ========================================= */
+
+.navbar {
+    background: #ffffff !important;
+    border-bottom: 1px solid var(--border-soft);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.navbar-brand {
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    color: var(--text-main) !important;
+}
+
+.nav-link-main {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    padding: 0;
+}
+
+.nav-link-main:hover {
+    color: var(--text-main);
+    text-decoration: none;
+}
+
+.navbar .btn-outline-light {
+    border-color: var(--border-soft);
+    color: var(--text-main);
+    background: #fff;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    padding-inline: 0.9rem;
+}
+
+.navbar .btn-outline-light:hover {
+    background-color: var(--text-main);
+    color: #fff;
+}
+
+/* =========================================
+   TITULOS / TEXTOS
+   ========================================= */
+
+h1, h2, h3 {
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 600;
+}
+
+h1 {
+    font-size: 1.4rem;
+    margin-bottom: 1.2rem;
+}
+
+h2, h3 {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+
+.text-muted {
+    color: var(--text-muted) !important;
+}
+
+/* =========================================
+   BOTONES
+   ========================================= */
+
+.btn {
+    border-radius: 999px;
+    font-size: 0.82rem;
+    padding-inline: 0.9rem;
+    transition:
+        transform .12s ease-out,
+        box-shadow .12s ease-out,
+        background-color .12s ease-out,
+        color .12s ease-out;
+}
+
+.btn-primary {
+    background: var(--accent);
+    border: none;
+    color: #1c1301;
+    font-weight: 600;
+}
+
+.btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.16);
+}
+
+.btn-danger {
+    background: var(--danger);
+    border: none;
+    color: #fff;
+}
+
+.btn-success {
+    background: var(--success);
+    border: none;
+    color: #fff;
+}
+
+.btn-warning {
+    background: #f1c40f;
+    border: none;
+    color: #222;
+}
+
+/* =========================================
+   TARJETAS GENERALES (pelis, forms, listas)
+   ========================================= */
+
+.table,
+.card-movie,
+.card-profile,
+.list-group,
+form {
+    background: var(--bg-card);
+    border-radius: 16px;
+    box-shadow: var(--shadow-soft);
+    border: 1px solid var(--border-soft);
+}
+
+/* formularios inline (delete) SIN tarjeta */
+form.d-inline {
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    box-shadow: none;
+    border: none;
+}
+
+/* =========================================
+   LISTA DE PELÍCULAS (INDEX)
+   ========================================= */
+
+.table {
+    margin-top: 0.7rem;
+    overflow: hidden;
+}
+
+.table thead {
+    background: #fdfdfd;
+}
+
+.table thead th {
+    border-bottom: 1px solid var(--border-soft);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--text-muted);
+}
+
+.table tbody tr {
+    background: var(--bg-card);
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.table tbody tr:hover {
+    background-color: var(--bg-card-soft);
+}
+
+.table img {
+    display: block;
+    height: 60px;
+    width: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.10);
+}
+
+/* =========================================
+   CARD PELÍCULA (SHOW / PROFILE)
+   ========================================= */
+
+.card-movie {
+    padding: 1.8rem 1.9rem;
+    margin-bottom: 1.8rem;
+}
+
+.movie-poster-large,
+.profile-poster {
+    max-width: 260px;
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    object-fit: cover;
+    margin-bottom: 1rem;
+}
+
+.movie-title,
+.profile-title {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    margin-bottom: 0.5rem;
+    color: var(--text-main);
+}
+
+.movie-meta,
+.profile-meta {
+    font-size: 0.86rem;
+    color: var(--text-muted);
+}
+
+.card-movie a,
+.card-profile a {
+    color: #ff9500;
+    text-decoration: none;
+}
+
+.card-movie a:hover,
+.card-profile a:hover {
+    text-decoration: underline;
+}
+
+.profile-synopsis {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* =========================================
+   SECCIÓN DE REVIEWS
+   ========================================= */
+
+.section-reviews-title {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--text-muted);
+    margin-bottom: 0.7rem;
+}
+
+/* cada review como mini-card */
+.review-block {
+    background-color: var(--bg-card-soft);
+    border-radius: 14px;
+    padding: 0.9rem 1rem;
+    border: 1px solid var(--border-soft);
+    margin-bottom: 0.75rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: .75rem;
+}
+
+.review-author {
+    font-weight: 600;
+    font-size: 0.88rem;
+    color: var(--text-main);
+}
+
+.review-date {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.review-text {
+    margin-top: .5rem;
+    margin-bottom: .25rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* badge con la nota */
+.rating-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 0.15rem 0.6rem;
+    border-radius: 999px;
+    background: var(--accent-soft);
+    border: 1px solid var(--accent);
+    color: #7a5a00;
+    font-size: 0.78rem;
+    font-weight: 600;
+}
+
+.rating-badge .star {
+    color: var(--accent);
+    font-size: 0.9rem;
+}
+
+/* formulario de nueva review */
+.review-form-title {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--text-muted);
+    margin-top: 1.5rem;
+    margin-bottom: 0.6rem;
+}
+
+.review-form {
+    margin-top: 0.4rem;
+}
+
+.review-form .form-control,
+.review-form .form-select {
+    font-size: 0.85rem;
+}
+
+.review-form small {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+/* =========================================
+   FORMULARIOS GENERALES (crear/editar)
+   ========================================= */
+
+form {
+    padding: 1.4rem 1.6rem;
+    margin-top: 0.5rem;
+}
+
+.form-control,
+.form-select {
+    background-color: #ffffff;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    color: var(--text-main);
+    font-size: 0.86rem;
+}
+
+.form-control:focus,
+.form-select:focus {
+    background-color: #ffffff;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 0.12rem rgba(255,180,0,0.25);
+    color: #000;
+}
+
+textarea.form-control {
+    min-height: 120px;
+}
+
+label.form-label {
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    color: var(--text-muted);
+}
+
+.text-danger {
+    font-size: 0.78rem;
+}
+
+/* =========================================
+   DIRECTORES (INDEX + SHOW)
+   ========================================= */
+
+.list-group {
+    margin-top: 0.5rem;
+}
+
+.list-group-item {
+    background-color: #ffffff;
+    border-color: var(--border-soft) !important;
+    color: var(--text-main);
+    border-radius: 0 !important;
+}
+
+.list-group-item:first-child {
+    border-top-left-radius: 12px !important;
+    border-top-right-radius: 12px !important;
+}
+.list-group-item:last-child {
+    border-bottom-left-radius: 12px !important;
+    border-bottom-right-radius: 12px !important;
+}
+
+.list-group-item:hover {
+    background-color: var(--bg-card-soft);
+}
+
+.director-movie-poster {
+    height: 64px;
+    width: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    object-fit: cover;
+}
+
+/* =========================================
+   ALERTAS & ENLACES
+   ========================================= */
+
+.alert-success {
+    background-color: #e8f9ef;
+    border: 1px solid var(--success);
+    color: #1e8f4a;
+    border-radius: 12px;
+}
+
+a {
+    color: var(--text-main);
+}
+a:hover {
+    color: #000;
+}
