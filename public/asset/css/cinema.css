@@ -1,21 +1,29 @@
 /* =========================================
-   VARIABLES Y BASE GENERAL
+   PALETA / BASE
    ========================================= */
 
 :root {
-    --bg-page: #f5f5f7;
-    --bg-card: #ffffff;
-    --bg-card-soft: #fafafa;
-    --text-main: #141414;
-    --text-muted: #777;
-    --border-soft: #e2e2e2;
-    --accent: #ffb400;      /* dorado tipo estrellas */
-    --accent-soft: #fff5d6;
-    --danger: #e74c3c;
-    --success: #27ae60;
-    --shadow-soft: 0 10px 25px rgba(0, 0, 0, 0.06);
+    --page-bg: #f4f2ec;           /* papel cálido */
+    --page-bg-alt: #ebe7dd;
+    --surface-dark: #151720;      /* navbar / encabezados */
+    --surface-card: #ffffff;      /* tarjetas */
+    --surface-soft: #f8f6f1;
+
+    --text-main: #1c1e24;
+    --text-muted: #7c7f8b;
+    --text-soft: #b0b3c0;
+
+    --accent: #d8a93b;            /* dorado cine */
+    --accent-strong: #b68400;
+
+    --border-soft: #ded8c7;
+    --shadow-soft: 0 12px 28px rgba(0,0,0,0.10);
+
+    --danger: #c54b3d;
+    --success: #367c4b;
 }
 
+/* Reset básico */
 *,
 *::before,
 *::after {
@@ -27,96 +35,101 @@ body {
     min-height: 100vh;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     color: var(--text-main);
-    background-color: var(--bg-page);
+    background: radial-gradient(circle at top, var(--page-bg-alt) 0, var(--page-bg) 52%, var(--page-bg-alt) 100%);
 }
 
-/* quitamos overlays antiguos */
+/* Sin overlays ni animaciones */
 body::before,
 body::after {
     content: none;
 }
 
-/* scroll sencillo */
+/* Scroll discreto */
 ::-webkit-scrollbar {
     width: 8px;
 }
 ::-webkit-scrollbar-thumb {
-    background: #cfcfcf;
+    background: #c3c0b7;
     border-radius: 4px;
 }
 
 /* =========================================
-   LAYOUT / CONTENEDOR
+   LAYOUT
    ========================================= */
 
 .container {
-    max-width: 1100px;
-    padding: 2rem 1.5rem 3rem;
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 2.4rem 1.6rem 3rem;
+}
+
+/* Pequeños títulos de sección */
+.section-label {
+    font-size: 0.78rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    margin-bottom: 0.6rem;
 }
 
 /* =========================================
-   NAVBAR
+   NAVBAR (barra superior)
    ========================================= */
 
 .navbar {
-    background: #ffffff !important;
-    border-bottom: 1px solid var(--border-soft);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    background: var(--surface-dark) !important;
+    border-bottom: 1px solid #000;
+    color: #f6f4ee;
 }
 
 .navbar-brand {
     font-weight: 700;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.26em;
     text-transform: uppercase;
-    font-size: 0.9rem;
-    color: var(--text-main) !important;
+    font-size: 0.85rem;
+    color: #f6f4ee !important;
 }
 
 .nav-link-main {
-    color: var(--text-muted);
-    font-size: 0.8rem;
+    color: #d7d2c2;
+    font-size: 0.78rem;
     text-transform: uppercase;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.22em;
     padding: 0;
 }
 
 .nav-link-main:hover {
-    color: var(--text-main);
+    color: #ffffff;
     text-decoration: none;
 }
 
 .navbar .btn-outline-light {
-    border-color: var(--border-soft);
-    color: var(--text-main);
-    background: #fff;
+    border-color: #ddd2b4;
+    color: #f6f4ee;
+    background: transparent;
     border-radius: 999px;
-    font-size: 0.8rem;
-    padding-inline: 0.9rem;
-}
-
-.navbar .btn-outline-light:hover {
-    background-color: var(--text-main);
-    color: #fff;
+    font-size: 0.78rem;
+    padding-inline: 0.95rem;
 }
 
 /* =========================================
-   TITULOS / TEXTOS
+   TIPOGRAFÍA GENERAL
    ========================================= */
 
 h1, h2, h3 {
     text-transform: uppercase;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.18em;
     font-weight: 600;
 }
 
 h1 {
-    font-size: 1.4rem;
-    margin-bottom: 1.2rem;
+    font-size: 1.35rem;
+    margin-bottom: 1.1rem;
 }
 
 h2, h3 {
-    font-size: 0.95rem;
-    color: var(--text-muted);
+    font-size: 0.9rem;
+    color: var(--text-soft);
 }
 
 .text-muted {
@@ -129,67 +142,90 @@ h2, h3 {
 
 .btn {
     border-radius: 999px;
-    font-size: 0.82rem;
-    padding-inline: 0.9rem;
-    transition:
-        transform .12s ease-out,
-        box-shadow .12s ease-out,
-        background-color .12s ease-out,
-        color .12s ease-out;
+    font-size: 0.8rem;
+    padding-inline: 0.95rem;
+    padding-block: 0.4rem;
 }
 
 .btn-primary {
-    background: var(--accent);
+    background: linear-gradient(135deg, var(--accent) 0, var(--accent-strong) 100%);
     border: none;
-    color: #1c1301;
+    color: #221808;
     font-weight: 600;
-}
-
-.btn-primary:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.16);
 }
 
 .btn-danger {
     background: var(--danger);
     border: none;
-    color: #fff;
+    color: #fdf7f6;
 }
 
 .btn-success {
     background: var(--success);
     border: none;
-    color: #fff;
+    color: #f3f8f4;
 }
 
 .btn-warning {
-    background: #f1c40f;
+    background: #e2b856;
     border: none;
-    color: #222;
+    color: #2a230f;
 }
 
-/* =========================================
-   TARJETAS GENERALES (pelis, forms, listas)
-   ========================================= */
-
-.table,
-.card-movie,
-.card-profile,
-.list-group,
-form {
-    background: var(--bg-card);
-    border-radius: 16px;
-    box-shadow: var(--shadow-soft);
-    border: 1px solid var(--border-soft);
-}
-
-/* formularios inline (delete) SIN tarjeta */
+/* Formularios inline (DELETE) sin tarjeta alrededor */
 form.d-inline {
     padding: 0;
     margin: 0;
     background: transparent;
-    box-shadow: none;
     border: none;
+    box-shadow: none;
+}
+
+/* =========================================
+   TARJETAS / SUPERFICIES
+   ========================================= */
+
+.surface-card,
+.table,
+.card-movie,
+.card-profile,
+.list-group,
+form.card-form {
+    background: var(--surface-card);
+    border-radius: 18px;
+    border: 1px solid var(--border-soft);
+    box-shadow: var(--shadow-soft);
+}
+
+/* “corte” de entrada de cine a los lados */
+.card-movie,
+.card-profile {
+    position: relative;
+    overflow: hidden;
+}
+
+.card-movie::before,
+.card-movie::after,
+.card-profile::before,
+.card-profile::after {
+    content: "";
+    position: absolute;
+    top: 24px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--page-bg);
+    border: 1px solid var(--border-soft);
+}
+
+.card-movie::before,
+.card-profile::before {
+    left: -8px;
+}
+
+.card-movie::after,
+.card-profile::after {
+    right: -8px;
 }
 
 /* =========================================
@@ -197,25 +233,25 @@ form.d-inline {
    ========================================= */
 
 .table {
-    margin-top: 0.7rem;
+    margin-top: 0.8rem;
     overflow: hidden;
 }
 
 .table thead {
-    background: #fdfdfd;
+    background: #f2eee3;
 }
 
 .table thead th {
     border-bottom: 1px solid var(--border-soft);
-    font-size: 0.78rem;
+    font-size: 0.76rem;
     text-transform: uppercase;
-    letter-spacing: 0.14em;
-    color: var(--text-muted);
+    letter-spacing: 0.18em;
+    color: var(--text-soft);
 }
 
 .table tbody tr {
-    background: var(--bg-card);
-    border-bottom: 1px solid #f0f0f0;
+    background: var(--surface-card);
+    border-bottom: 1px solid #eee4cf;
 }
 
 .table tbody tr:last-child {
@@ -223,123 +259,144 @@ form.d-inline {
 }
 
 .table tbody tr:hover {
-    background-color: var(--bg-card-soft);
+    background-color: var(--surface-soft);
 }
 
 .table img {
     display: block;
     height: 60px;
     width: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.10);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.14);
 }
 
 /* =========================================
-   CARD PELÍCULA (SHOW / PROFILE)
+   CARD PELÍCULA (SHOW)
    ========================================= */
 
 .card-movie {
-    padding: 1.8rem 1.9rem;
+    padding: 1.9rem 2rem 1.7rem;
     margin-bottom: 1.8rem;
 }
 
-.movie-poster-large,
-.profile-poster {
-    max-width: 260px;
-    border-radius: 14px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+.movie-poster-large {
+    max-width: 270px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.35);
     object-fit: cover;
-    margin-bottom: 1rem;
+    margin-bottom: 1.2rem;
 }
 
-.movie-title,
-.profile-title {
-    font-size: 1.4rem;
-    text-transform: uppercase;
-    letter-spacing: 0.18em;
-    margin-bottom: 0.5rem;
-    color: var(--text-main);
+.movie-title {
+    font-size: 1.5rem;
+    letter-spacing: 0.2em;
+    margin-bottom: 0.45rem;
+    color: #121217;
 }
 
-.movie-meta,
-.profile-meta {
-    font-size: 0.86rem;
+.movie-meta {
+    font-size: 0.9rem;
     color: var(--text-muted);
 }
 
-.card-movie a,
-.card-profile a {
-    color: #ff9500;
+.card-movie a {
+    color: var(--accent-strong);
     text-decoration: none;
 }
 
-.card-movie a:hover,
-.card-profile a:hover {
+.card-movie a:hover {
     text-decoration: underline;
+}
+
+/* =========================================
+   PERFIL (página de “mi perfil” de peli)
+   ========================================= */
+
+.card-profile {
+    padding: 1.8rem 2rem;
+    margin-bottom: 2rem;
+}
+
+.profile-poster {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+    margin-bottom: 1.1rem;
+}
+
+.profile-title {
+    font-size: 1.6rem;
+    letter-spacing: 0.22em;
+    margin-bottom: 0.5rem;
+}
+
+.profile-meta {
+    font-size: 0.9rem;
+    color: var(--text-muted);
 }
 
 .profile-synopsis {
     font-size: 1rem;
     line-height: 1.6;
+    margin-top: 0.85rem;
 }
 
 /* =========================================
-   SECCIÓN DE REVIEWS
+   REVIEWS
    ========================================= */
 
 .section-reviews-title {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     text-transform: uppercase;
-    letter-spacing: 0.18em;
-    color: var(--text-muted);
-    margin-bottom: 0.7rem;
+    letter-spacing: 0.22em;
+    color: var(--text-soft);
+    margin-bottom: 0.6rem;
 }
 
-/* cada review como mini-card */
+/* cada review como tarjeta pequeña */
 .review-block {
-    background-color: var(--bg-card-soft);
+    background-color: var(--surface-soft);
     border-radius: 14px;
     padding: 0.9rem 1rem;
-    border: 1px solid var(--border-soft);
+    border: 1px dashed #dacfb5;
     margin-bottom: 0.75rem;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
 }
 
 .review-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    gap: .75rem;
+    align-items: baseline;
+    gap: 0.75rem;
 }
 
 .review-author {
     font-weight: 600;
-    font-size: 0.88rem;
+    font-size: 0.9rem;
     color: var(--text-main);
 }
 
 .review-date {
-    font-size: 0.75rem;
+    font-size: 0.74rem;
     color: var(--text-muted);
 }
 
 .review-text {
-    margin-top: .5rem;
-    margin-bottom: .25rem;
+    margin-top: 0.45rem;
+    margin-bottom: 0.25rem;
     font-size: 0.9rem;
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
-/* badge con la nota */
+/* badge con nota tipo “sello” */
 .rating-badge {
     display: inline-flex;
     align-items: center;
     gap: 4px;
-    padding: 0.15rem 0.6rem;
+    padding: 0.16rem 0.6rem;
     border-radius: 999px;
     background: var(--accent-soft);
     border: 1px solid var(--accent);
-    color: #7a5a00;
+    color: #644511;
     font-size: 0.78rem;
     font-weight: 600;
 }
@@ -349,54 +406,40 @@ form.d-inline {
     font-size: 0.9rem;
 }
 
-/* formulario de nueva review */
+/* título del formulario de review */
 .review-form-title {
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     text-transform: uppercase;
-    letter-spacing: 0.16em;
-    color: var(--text-muted);
-    margin-top: 1.5rem;
-    margin-bottom: 0.6rem;
-}
-
-.review-form {
-    margin-top: 0.4rem;
-}
-
-.review-form .form-control,
-.review-form .form-select {
-    font-size: 0.85rem;
-}
-
-.review-form small {
-    font-size: 0.75rem;
-    color: var(--text-muted);
+    letter-spacing: 0.22em;
+    color: var(--text-soft);
+    margin-top: 1.4rem;
+    margin-bottom: 0.55rem;
 }
 
 /* =========================================
-   FORMULARIOS GENERALES (crear/editar)
+   FORMULARIOS (crear/editar/añadir review)
    ========================================= */
 
-form {
-    padding: 1.4rem 1.6rem;
-    margin-top: 0.5rem;
+form.card-form {
+    padding: 1.4rem 1.7rem;
+    margin-top: 0.7rem;
 }
 
 .form-control,
 .form-select {
-    background-color: #ffffff;
+    background-color: #fff;
     border-radius: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #c9c3b4;
     color: var(--text-main);
     font-size: 0.86rem;
 }
 
 .form-control:focus,
 .form-select:focus {
-    background-color: #ffffff;
+    background-color: #fff;
     border-color: var(--accent);
-    box-shadow: 0 0 0 0.12rem rgba(255,180,0,0.25);
-    color: #000;
+    outline: none;
+    box-shadow: 0 0 0 1px rgba(216,169,59,0.35);
 }
 
 textarea.form-control {
@@ -407,27 +450,29 @@ label.form-label {
     font-weight: 500;
     text-transform: uppercase;
     font-size: 0.75rem;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.14em;
     color: var(--text-muted);
 }
 
 .text-danger {
     font-size: 0.78rem;
+    color: var(--danger) !important;
 }
 
 /* =========================================
-   DIRECTORES (INDEX + SHOW)
+   DIRECTORES
    ========================================= */
 
 .list-group {
-    margin-top: 0.5rem;
+    margin-top: 0.6rem;
 }
 
 .list-group-item {
-    background-color: #ffffff;
+    background-color: var(--surface-card);
     border-color: var(--border-soft) !important;
     color: var(--text-main);
     border-radius: 0 !important;
+    font-size: 0.88rem;
 }
 
 .list-group-item:first-child {
@@ -440,14 +485,14 @@ label.form-label {
 }
 
 .list-group-item:hover {
-    background-color: var(--bg-card-soft);
+    background-color: var(--surface-soft);
 }
 
 .director-movie-poster {
     height: 64px;
     width: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    border-radius: 9px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
     object-fit: cover;
 }
 
@@ -456,15 +501,35 @@ label.form-label {
    ========================================= */
 
 .alert-success {
-    background-color: #e8f9ef;
+    background-color: #e8f5ec;
     border: 1px solid var(--success);
-    color: #1e8f4a;
+    color: #295b3a;
     border-radius: 12px;
 }
 
 a {
-    color: var(--text-main);
+    color: var(--accent-strong);
 }
 a:hover {
-    color: #000;
+    color: #795400;
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 768px) {
+    .container {
+        padding-inline: 1.1rem;
+    }
+
+    .card-movie,
+    .card-profile {
+        padding-inline: 1.4rem;
+    }
+
+    .movie-poster-large,
+    .profile-poster {
+        max-width: 100%;
+    }
 }

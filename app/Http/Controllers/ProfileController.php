@@ -9,7 +9,7 @@ class ProfileController extends Controller
 {
     public function show()
     {
-        // Aquí decides qué película mostrar como "perfil"
+        //Muestro perfil como "perfil"
        
         $movie = Movie::latest()->first();
 
