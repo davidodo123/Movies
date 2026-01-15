@@ -1,535 +1,69 @@
-/* =========================================
-   PALETA / BASE
-   ========================================= */
-
-:root {
-    --page-bg: #f4f2ec;           /* papel cálido */
-    --page-bg-alt: #ebe7dd;
-    --surface-dark: #151720;      /* navbar / encabezados */
-    --surface-card: #ffffff;      /* tarjetas */
-    --surface-soft: #f8f6f1;
-
-    --text-main: #1c1e24;
-    --text-muted: #7c7f8b;
-    --text-soft: #b0b3c0;
-
-    --accent: #d8a93b;            /* dorado cine */
-    --accent-strong: #b68400;
-
-    --border-soft: #ded8c7;
-    --shadow-soft: 0 12px 28px rgba(0,0,0,0.10);
-
-    --danger: #c54b3d;
-    --success: #367c4b;
-}
-
-/* Reset básico */
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
-
-body {
-    margin: 0;
-    min-height: 100vh;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    color: var(--text-main);
-    background: radial-gradient(circle at top, var(--page-bg-alt) 0, var(--page-bg) 52%, var(--page-bg-alt) 100%);
-}
-
-/* Sin overlays ni animaciones */
-body::before,
-body::after {
-    content: none;
-}
-
-/* Scroll discreto */
-::-webkit-scrollbar {
-    width: 8px;
-}
-::-webkit-scrollbar-thumb {
-    background: #c3c0b7;
-    border-radius: 4px;
-}
-
-/* =========================================
-   LAYOUT
-   ========================================= */
-
-.container {
-    max-width: 1120px;
-    margin: 0 auto;
-    padding: 2.4rem 1.6rem 3rem;
-}
-
-/* Pequeños títulos de sección */
-.section-label {
-    font-size: 0.78rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--text-soft);
-    margin-bottom: 0.6rem;
-}
-
-/* =========================================
-   NAVBAR (barra superior)
-   ========================================= */
-
-.navbar {
-    background: var(--surface-dark) !important;
-    border-bottom: 1px solid #000;
-    color: #f6f4ee;
-}
-
-.navbar-brand {
-    font-weight: 700;
-    letter-spacing: 0.26em;
-    text-transform: uppercase;
-    font-size: 0.85rem;
-    color: #f6f4ee !important;
-}
-
-.nav-link-main {
-    color: #d7d2c2;
-    font-size: 0.78rem;
-    text-transform: uppercase;
-    letter-spacing: 0.22em;
-    padding: 0;
-}
-
-.nav-link-main:hover {
-    color: #ffffff;
-    text-decoration: none;
-}
-
-.navbar .btn-outline-light {
-    border-color: #ddd2b4;
-    color: #f6f4ee;
-    background: transparent;
-    border-radius: 999px;
-    font-size: 0.78rem;
-    padding-inline: 0.95rem;
-}
-
-/* =========================================
-   TIPOGRAFÍA GENERAL
-   ========================================= */
-
-h1, h2, h3 {
-    text-transform: uppercase;
-    letter-spacing: 0.18em;
-    font-weight: 600;
-}
-
-h1 {
-    font-size: 1.35rem;
-    margin-bottom: 1.1rem;
-}
-
-h2, h3 {
-    font-size: 0.9rem;
-    color: var(--text-soft);
-}
-
-.text-muted {
-    color: var(--text-muted) !important;
-}
-
-/* =========================================
-   BOTONES
-   ========================================= */
-
-.btn {
-    border-radius: 999px;
-    font-size: 0.8rem;
-    padding-inline: 0.95rem;
-    padding-block: 0.4rem;
-}
-
-.btn-primary {
-    background: linear-gradient(135deg, var(--accent) 0, var(--accent-strong) 100%);
-    border: none;
-    color: #221808;
-    font-weight: 600;
-}
-
-.btn-danger {
-    background: var(--danger);
-    border: none;
-    color: #fdf7f6;
-}
-
-.btn-success {
-    background: var(--success);
-    border: none;
-    color: #f3f8f4;
-}
-
-.btn-warning {
-    background: #e2b856;
-    border: none;
-    color: #2a230f;
-}
-
-/* Formularios inline (DELETE) sin tarjeta alrededor */
-form.d-inline {
-    padding: 0;
-    margin: 0;
-    background: transparent;
-    border: none;
-    box-shadow: none;
-}
-
-/* =========================================
-   TARJETAS / SUPERFICIES
-   ========================================= */
-
-.surface-card,
-.table,
-.card-movie,
-.card-profile,
-.list-group,
-form.card-form {
-    background: var(--surface-card);
-    border-radius: 18px;
-    border: 1px solid var(--border-soft);
-    box-shadow: var(--shadow-soft);
-}
-
-/* “corte” de entrada de cine a los lados */
-.card-movie,
-.card-profile {
-    position: relative;
-    overflow: hidden;
-}
-
-.card-movie::before,
-.card-movie::after,
-.card-profile::before,
-.card-profile::after {
-    content: "";
-    position: absolute;
-    top: 24px;
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    background: var(--page-bg);
-    border: 1px solid var(--border-soft);
-}
-
-.card-movie::before,
-.card-profile::before {
-    left: -8px;
-}
-
-.card-movie::after,
-.card-profile::after {
-    right: -8px;
-}
-
-/* =========================================
-   LISTA DE PELÍCULAS (INDEX)
-   ========================================= */
-
-.table {
-    margin-top: 0.8rem;
-    overflow: hidden;
-}
-
-.table thead {
-    background: #f2eee3;
-}
-
-.table thead th {
-    border-bottom: 1px solid var(--border-soft);
-    font-size: 0.76rem;
-    text-transform: uppercase;
-    letter-spacing: 0.18em;
-    color: var(--text-soft);
-}
-
-.table tbody tr {
-    background: var(--surface-card);
-    border-bottom: 1px solid #eee4cf;
-}
-
-.table tbody tr:last-child {
-    border-bottom: none;
-}
-
-.table tbody tr:hover {
-    background-color: var(--surface-soft);
-}
-
-.table img {
-    display: block;
-    height: 60px;
-    width: auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.14);
-}
-
-/* =========================================
-   CARD PELÍCULA (SHOW)
-   ========================================= */
-
-.card-movie {
-    padding: 1.9rem 2rem 1.7rem;
-    margin-bottom: 1.8rem;
-}
-
-.movie-poster-large {
-    max-width: 270px;
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.35);
-    object-fit: cover;
-    margin-bottom: 1.2rem;
-}
-
-.movie-title {
-    font-size: 1.5rem;
-    letter-spacing: 0.2em;
-    margin-bottom: 0.45rem;
-    color: #121217;
-}
-
-.movie-meta {
-    font-size: 0.9rem;
-    color: var(--text-muted);
-}
-
-.card-movie a {
-    color: var(--accent-strong);
-    text-decoration: none;
-}
-
-.card-movie a:hover {
-    text-decoration: underline;
-}
-
-/* =========================================
-   PERFIL (página de “mi perfil” de peli)
-   ========================================= */
-
-.card-profile {
-    padding: 1.8rem 2rem;
-    margin-bottom: 2rem;
-}
-
-.profile-poster {
-    width: 100%;
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.35);
-    margin-bottom: 1.1rem;
-}
-
-.profile-title {
-    font-size: 1.6rem;
-    letter-spacing: 0.22em;
-    margin-bottom: 0.5rem;
-}
-
-.profile-meta {
-    font-size: 0.9rem;
-    color: var(--text-muted);
-}
-
-.profile-synopsis {
-    font-size: 1rem;
-    line-height: 1.6;
-    margin-top: 0.85rem;
-}
-
-/* =========================================
-   REVIEWS
-   ========================================= */
-
-.section-reviews-title {
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.22em;
-    color: var(--text-soft);
-    margin-bottom: 0.6rem;
-}
-
-/* cada review como tarjeta pequeña */
-.review-block {
-    background-color: var(--surface-soft);
-    border-radius: 14px;
-    padding: 0.9rem 1rem;
-    border: 1px dashed #dacfb5;
-    margin-bottom: 0.75rem;
-}
-
-.review-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 0.75rem;
-}
-
-.review-author {
-    font-weight: 600;
-    font-size: 0.9rem;
-    color: var(--text-main);
-}
-
-.review-date {
-    font-size: 0.74rem;
-    color: var(--text-muted);
-}
-
-.review-text {
-    margin-top: 0.45rem;
-    margin-bottom: 0.25rem;
-    font-size: 0.9rem;
-    line-height: 1.6;
-}
-
-/* badge con nota tipo “sello” */
-.rating-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    padding: 0.16rem 0.6rem;
-    border-radius: 999px;
-    background: var(--accent-soft);
-    border: 1px solid var(--accent);
-    color: #644511;
-    font-size: 0.78rem;
-    font-weight: 600;
-}
-
-.rating-badge .star {
-    color: var(--accent);
-    font-size: 0.9rem;
-}
-
-/* título del formulario de review */
-.review-form-title {
-    font-size: 0.82rem;
-    text-transform: uppercase;
-    letter-spacing: 0.22em;
-    color: var(--text-soft);
-    margin-top: 1.4rem;
-    margin-bottom: 0.55rem;
-}
-
-/* =========================================
-   FORMULARIOS (crear/editar/añadir review)
-   ========================================= */
-
-form.card-form {
-    padding: 1.4rem 1.7rem;
-    margin-top: 0.7rem;
-}
-
-.form-control,
-.form-select {
-    background-color: #fff;
-    border-radius: 10px;
-    border: 1px solid #c9c3b4;
-    color: var(--text-main);
-    font-size: 0.86rem;
-}
-
-.form-control:focus,
-.form-select:focus {
-    background-color: #fff;
-    border-color: var(--accent);
-    outline: none;
-    box-shadow: 0 0 0 1px rgba(216,169,59,0.35);
-}
-
-textarea.form-control {
-    min-height: 120px;
-}
-
-label.form-label {
-    font-weight: 500;
-    text-transform: uppercase;
-    font-size: 0.75rem;
-    letter-spacing: 0.14em;
-    color: var(--text-muted);
-}
-
-.text-danger {
-    font-size: 0.78rem;
-    color: var(--danger) !important;
-}
-
-/* =========================================
-   DIRECTORES
-   ========================================= */
-
-.list-group {
-    margin-top: 0.6rem;
-}
-
-.list-group-item {
-    background-color: var(--surface-card);
-    border-color: var(--border-soft) !important;
-    color: var(--text-main);
-    border-radius: 0 !important;
-    font-size: 0.88rem;
-}
-
-.list-group-item:first-child {
-    border-top-left-radius: 12px !important;
-    border-top-right-radius: 12px !important;
-}
-.list-group-item:last-child {
-    border-bottom-left-radius: 12px !important;
-    border-bottom-right-radius: 12px !important;
-}
-
-.list-group-item:hover {
-    background-color: var(--surface-soft);
-}
-
-.director-movie-poster {
-    height: 64px;
-    width: auto;
-    border-radius: 9px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    object-fit: cover;
-}
-
-/* =========================================
-   ALERTAS & ENLACES
-   ========================================= */
-
-.alert-success {
-    background-color: #e8f5ec;
-    border: 1px solid var(--success);
-    color: #295b3a;
-    border-radius: 12px;
-}
-
-a {
-    color: var(--accent-strong);
-}
-a:hover {
-    color: #795400;
-}
-
-/* =========================================
-   RESPONSIVE
-   ========================================= */
-
-@media (max-width: 768px) {
-    .container {
-        padding-inline: 1.1rem;
+/* Cinema Extreme - Estilo Anidado */
+.cartelera-body {
+    background: #0f0f0f;
+    color: #e0e0e0;
+    font-family: 'Segoe UI', sans-serif;
+    padding: 40px;
+
+    .main-title {
+        color: #ffcc00; /* Dorado Extreme */
+        text-align: center;
+        text-transform: uppercase;
+        text-shadow: 2px 2px 5px rgba(255, 204, 0, 0.2);
+        margin-bottom: 30px;
     }
 
-    .card-movie,
-    .card-profile {
-        padding-inline: 1.4rem;
-    }
+    .movie-card-table {
+        width: 100%;
+        background: #1a1a1a;
+        border-radius: 15px;
+        overflow: hidden;
+        border-collapse: collapse;
 
-    .movie-poster-large,
-    .profile-poster {
-        max-width: 100%;
+        thead {
+            background: #252525;
+            color: #ffcc00;
+            th { padding: 20px; text-transform: uppercase; font-size: 0.9rem; }
+        }
+
+        tbody tr {
+            border-bottom: 1px solid #333;
+            transition: background 0.3s;
+
+            &:hover {
+                background: #2a2a2a; /* Efecto al pasar el ratón */
+            }
+
+            td {
+                padding: 15px;
+                text-align: center;
+                vertical-align: middle;
+
+                .movie-poster {
+                    width: 100px;
+                    height: 150px;
+                    object-fit: cover;
+                    border-radius: 5px;
+                    border: 2px solid #333;
+                    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+                    transition: transform 0.3s;
+
+                    &:hover {
+                        transform: scale(1.1); /* Zoom extreme en la foto */
+                        border-color: #ffcc00;
+                    }
+                }
+
+                .btn-view {
+                    background: #ffcc00;
+                    color: #000;
+                    padding: 8px 15px;
+                    border-radius: 20px;
+                    text-decoration: none;
+                    font-weight: bold;
+                    &:hover { background: #e6b800; }
+                }
+            }
+        }
     }
 }

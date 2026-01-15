@@ -2,7 +2,6 @@
 
 @section('content')
 
-    {{-- CARD PRINCIPAL DE LA PELI --}}
     <div class="card-movie mb-4 card-movie--stacked">
 
         @if($movie->path)
@@ -23,7 +22,6 @@
         <p class="mt-3">{{ $movie->synopsis }}</p>
     </div>
 
-    {{-- LISTA DE REVIEWS --}}
     <h3 class="section-reviews-title">Reviews</h3>
 
     @forelse($movie->reviews as $review)
@@ -45,7 +43,6 @@
         <p class="text-muted">No reviews yet.</p>
     @endforelse
 
-    {{-- FORMULARIO PARA AÑADIR REVIEW --}}
     <h4 class="review-form-title mt-4">Add your review</h4>
 
     <form action="{{ route('movies.reviews.store', $movie->id) }}" method="POST" class="review-form">

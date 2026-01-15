@@ -13,12 +13,12 @@ use Illuminate\Support\Facades\Storage;
 
 class MovieController extends Controller
 {
-    public function index(): View //Cargamos las relaciones director y reviews para esta película
-    {
-        $movies = Movie::with('director')->get();
-        return view('movies.index', compact('movies'));
-    }
-
+    public function index()
+{
+    // Cambia ->get() por ->paginate(5) para que no falle el método links()
+    $movies = \App\Models\Movie::with('director')->paginate(5); 
+    return view('movies.index', compact('movies'));
+}
     public function show(Movie $movie): View  //Cargamos las relaciones director y reviews para esta película
 
     {

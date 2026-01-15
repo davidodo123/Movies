@@ -1,55 +1,60 @@
 @extends('layouts.app')
 
 @section('content')
-<h1 class="mb-3">Movies</h1>
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Cartelera</h1>
+        @auth
+            <a href="{{ route('movies.create') }}" class="btn btn-primary">+ Añadir Película</a>
+        @endauth
+    </div>
 
-@if($movies->isEmpty())
-<p>No movies yet.</p>
-@else
-<table class="table table-striped">
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Poster</th>
+                    <th>Título</th>
+                    <th>Año</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($movies as $movie)
+                <table class="table">
     <thead>
         <tr>
             <th>Poster</th>
-            <th>Title</th>
-            <th>Year</th>
-            <th>Director</th>
-            <th></th>
+            <th>Título</th>
+            <th>Año</th>
+            <th>Director</th> <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
-        @foreach($movies as $movie)
+        @foreach ($movies as $movie)
         <tr>
-            <td>
-                @if($movie->path)
-                <img src="{{ asset('storage/' . $movie->path) }}"
-                    alt="{{ $movie->title }}"
-                    style="height: 60px; width: auto; border-radius: 6px;">
-                @else
-                <span class="text-muted">No image</span>
-                @endif
-            </td>
-
-            <td>{{ $movie->title }}</td>
+            <td><img src="{{ asset('storage/' . $movie->poster) }}" alt="{{ $movie->titulo }}" style="width: 100px;"></td>
+            <td><strong>{{ $movie->title }}</strong></td>
             <td>{{ $movie->year }}</td>
-            <td>{{ $movie->director->name }}</td>
-
+            <td>{{ $movie->director->name ?? 'N/A' }}</td>
             <td>
-                <a href="{{ route('movies.show', $movie->id) }}" class="btn btn-sm btn-primary">View</a>
-
-                <a href="{{ route('movies.edit', $movie->id) }}" class="btn btn-sm btn-warning">Edit</a>
-
-                <form action="{{ route('movies.destroy', $movie->id) }}" method="POST" class="d-inline">
-                    @csrf
-                    @method('DELETE')
-                    <button class="btn btn-sm btn-danger" onclick="return confirm('Delete movie?')">
-                        Delete
-                    </button>
-                </form>
+                <a href="{{ route('movies.show', $movie) }}" class="btn btn-sm btn-outline-dark">Ver ficha</a>
             </td>
-
         </tr>
         @endforeach
     </tbody>
 </table>
-@endif
+
+<div class="mt-4 d-flex justify-content-center">
+    {{ $movies->links() }}
+</div>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+
+    <div class="mt-4 d-flex justify-content-center">
+        {{ $movies->links() }}
+    </div>
+</div>
 @endsection

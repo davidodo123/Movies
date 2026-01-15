@@ -5,7 +5,6 @@
 @section('content')
     <h1 class="mb-3">Director</h1>
 
-    {{-- CARD DEL DIRECTOR --}}
     <div class="card-movie mb-4">
         <h2 class="movie-title">{{ $director->name }}</h2>
 
@@ -20,7 +19,6 @@
         </p>
     </div>
 
-    {{-- CARD CON SUS PELÍCULAS --}}
     <div class="page-card">
         <h3 class="mb-3">Movies</h3>
 
@@ -32,7 +30,6 @@
                     <li class="list-group-item d-flex justify-content-between align-items-center">
 
                         <div class="d-flex align-items-center gap-3">
-                            {{-- PÓSTER DE LA PELI --}}
                             @if($movie->path)
                                 <img src="{{ asset('storage/' . $movie->path) }}"
                                      alt="{{ $movie->title }}"
